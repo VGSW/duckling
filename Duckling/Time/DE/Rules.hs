@@ -56,7 +56,7 @@ ruleDaysOfWeek = mkRuleDaysOfWeek
 
 ruleMonths :: [Rule]
 ruleMonths = mkRuleMonths
-  [ ( "Januar"   , "januar|jan\\.?"             )
+  [ ( "Januar"   , "jänner|januar|jan\\.?"             )
   , ( "Februar"  , "februar|feb\\.?"            )
   , ( "Marz"     , "m(ä)rz|m(ä)r\\.?" )
   , ( "April"    , "april|apr\\.?"              )
@@ -136,6 +136,34 @@ ruleQuarterTotillbeforeIntegerHourofday = Rule
   , prod = \tokens -> case tokens of
       (_:Token Time td:_) -> do
         t <- minutesBefore 15 td
+        Just $ Token Time t
+      _ -> Nothing
+  }
+
+ruleWienerischDreiviertel :: Rule
+ruleWienerischDreiviertel = Rule
+  { name = "dreiviertel <integer> (hour-of-day)"
+  , pattern =
+    [regex "dreiviertel"
+    , Predicate isAnHourOfDay
+    ]
+  , prod = \tokens -> case tokens of
+      (_:Token Time td:_) -> do
+        t <- minutesBefore 15 td
+        Just $ Token Time t
+      _ -> Nothing
+  }
+
+ruleWienerischViertel :: Rule
+ruleWienerischViertel = Rule
+  { name = "viertel <integer> (hour-of-day)"
+  , pattern =
+    [regex "viertel"
+    , Predicate isAnHourOfDay
+    ]
+  , prod = \tokens -> case tokens of
+      (_:Token Time td:_) -> do
+        t <- minutesBefore 45 td
         Just $ Token Time t
       _ -> Nothing
   }
@@ -1715,6 +1743,8 @@ rules =
   , ruleYearLatent2
   , ruleYyyymmdd
   , ruleQuarterTotillbeforeIntegerHourofday
+  , ruleWienerischDreiviertel
+  , ruleWienerischViertel
   , ruleHalfTotillbeforeIntegerHourofday
   , ruleQuarterAfterpastIntegerHourofday
   , ruleHalfAfterpastIntegerHourofday

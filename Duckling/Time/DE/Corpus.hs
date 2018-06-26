@@ -666,4 +666,24 @@ allExamples = concat
   , examples (datetime (2013, 2, 12, 17, 10, 0) Minute)
              [ "17h10"
              ]
+  , examples (datetime (2013, 2, 12, 14, 45, 0) Minute)
+        [ "dreiviertel drei" ]
+  , examples (datetime (2013, 2, 12, 14, 15, 0) Minute)
+        [ "viertel drei" ]
+--  , examples (datetime (2013, 2, 12, 13, 40, 0) Minute)
+--        [ "fünf vor dreiviertel 14:00" ]
+--  , examples (datetime (2013, 2, 12, 13, 40, 0) Minute)
+--        [ "fünf vor dreiviertel 14:00" ]
+--  , examples (datetime (2013, 2, 12, 16, 18, 0) Minute)
+--        [ "3 nach viertel fünf" ]
+--  , examples (datetime (2013, 2, 12, 13, 34, 0) Minute)
+--        [ "4 min nach halb zwei" ]
+  , examples (datetime (2013, 2, 12, 16, 50, 0) Minute)
+        [ "10m vor 17:00" ]
+--  , examples (datetime (2013, 2, 14, 16, 30, 0) Day)
+--        [ "in 2 Tagen" ]
+  , examples (datetime (2013, 2, 19, 13, 25, 0) Minute)
+        [ "nächste Woche am Dienstag um 13:25" ]
+--  , examples (datetime (2013, 2, 4, 14, 00, 0) Minute)
+--        [ "letzte Woche Montag Nachmittag um 2" ]
   ]

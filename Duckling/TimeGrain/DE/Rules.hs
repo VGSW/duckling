@@ -22,7 +22,7 @@ import Duckling.Types
 
 grains :: [(Text, String, TG.Grain)]
 grains = [ ("second (grain)", "sekunden?", TG.Second)
-         , ("minute (grain)", "minuten?", TG.Minute)
+         , ("minute (grain)", "m(inuten?)?", TG.Minute)
          , ("hour (grain)", "stunden?", TG.Hour)
          , ("day (grain)", "tage?n?", TG.Day)
          , ("week (grain)", "wochen?", TG.Week)
